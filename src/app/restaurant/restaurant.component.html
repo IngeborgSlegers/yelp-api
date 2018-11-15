@@ -71,6 +71,15 @@
   <p class='address'>{{restaurant.location.display_address}}</p>
   <p class='phone'>Phone Number: {{restaurant.display_phone}}</p>
   <img class='image' src='{{restaurant.image_url}}' height="200px" >
-  <p class='stars'>{{restaurant.rating}}</p>
+  <div *ngIf="restaurant.rating === 0 "><img src="../../assets/stars_small_0.png"/></div> 
+  <div *ngIf="restaurant.rating === 1 "><img src="../../assets/stars_small_1.png"/></div> 
+  <div *ngIf="restaurant.rating === 1.5 "><img src="../../assets/stars_small_1_half.png"/></div> 
+  <div *ngIf="restaurant.rating === 2 "><img src="../../assets/stars_small_2.png"/></div> 
+  <div *ngIf="restaurant.rating === 2.5 "><img src="../../assets/stars_small_2_half.png"/></div> 
+  <div *ngIf="restaurant.rating === 3 "><img src="../../assets/stars_small_3.png"/></div> 
+  <div *ngIf="restaurant.rating === 3.5 "><img src="../../assets/stars_small_3_half.png"/></div> 
+  <div *ngIf="restaurant.rating === 4 "><img src="../../assets/stars_small_4.png"/></div> 
+  <div *ngIf="restaurant.rating === 4.5 "><img src="../../assets/stars_small_4_half.png"/></div> 
+  <div *ngIf="restaurant.rating === 5 "><img src="../../assets/stars_small_5.png"/></div> 
   <p class='delivery'>{{restaurant.transactions}}</p>
 </div>
