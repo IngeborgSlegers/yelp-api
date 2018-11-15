@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { RestaurantService } from '../restaurant.service';
-import { Restaurant } from '../restaurant';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 
 @Component({
@@ -11,11 +10,10 @@ import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 })
 export class RestaurantComponent implements OnInit {
 
-  businesses: Restaurant[];
+  restaurants: any;
+  restaurant: any;
 
   displayResults: FormGroup;
-
-  // x = Math.floor((Math.random() * 100) + 1);
 
   constructor(private restaurantService: RestaurantService, private fb: FormBuilder) { }
 
@@ -29,10 +27,13 @@ export class RestaurantComponent implements OnInit {
   }
 
   getRestaurants(): void {
-    this.restaurantService.getResults(this.displayResults.value.price, this.displayResults.value.city, this.displayResults.value.state).subscribe(businesses => {this.businesses = businesses
-    console.log(this.businesses)
+    this.restaurantService.getResults(this.displayResults.value.price, this.displayResults.value.city, this.displayResults.value.state)
+    .subscribe(businesses => {
+      this.restaurants = businesses.businesses
+      let x: number = Math.floor((Math.random() * 19) + 1)  
+      this.restaurant = this.restaurants[x]
+      console.log(this.restaurant)
+      return this.restaurant
     })
   }
-
-
 }

@@ -66,13 +66,11 @@
   <button type="submit" value="Submit"> Submit </button>
 </form>
 
-<div *ngIf="businesses">
-  <div class="details">
-    <h4 class="restaurantName">Restaurant Name: {{businesses.businesses[0].name}}</h4>
-    <p class='address'>{{businesses.businesses[0].location.display_address}}</p>
-    <p class='phone'>Phone Number: {{businesses.businesses[0].display_phone}}</p>
-    <p class='image'>{{businesses.businesses[0].image_url}}</p>
-    <p class='stars'>{{businesses.businesses[0].rating}}</p>
-    <p class='delivery'>{{businesses.businesses[0].transactions.delivery}}</p>
-  </div>
+<div *ngIf="restaurant">
+  <h4 class="restaurantName">Restaurant Name: {{restaurant.name}}</h4>
+  <p class='address'>{{restaurant.location.display_address}}</p>
+  <p class='phone'>Phone Number: {{restaurant.display_phone}}</p>
+  <img class='image' src='{{restaurant.image_url}}' height="200px" >
+  <p class='stars'>{{restaurant.rating}}</p>
+  <p class='delivery'>{{restaurant.transactions}}</p>
 </div>

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
-import { Restaurant } from './restaurant';
 import { catchError } from 'rxjs/operators';
 import { AuthInterceptor } from './auth.interceptor';
 
@@ -10,7 +9,7 @@ import { AuthInterceptor } from './auth.interceptor';
 })
 export class RestaurantService {
 
-  restaurant: Restaurant[];
+  restaurant: any;
   constructor(private http: HttpClient) { }
 
   authInterceptor: AuthInterceptor;
@@ -37,7 +36,7 @@ export class RestaurantService {
 
   getResults(price, city, state): Observable<any> {
     return this.http
-    .get<Restaurant[]>(`${this.corsUrl}/${this.yelpUrl}/search?price=${price}&location=${city} ${state}&limit=1`, this.httpOptions)
+    .get(`${this.corsUrl}/${this.yelpUrl}/search?price=${price}&location=${city} ${state}`, this.httpOptions)
     .pipe(catchError(this.handleError("getRestaurants", [])))
   }
 }
